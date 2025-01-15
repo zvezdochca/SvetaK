@@ -76,10 +76,10 @@ def test_is_empty():
     assert utils.is_empty("skypro") is False  # строка с названием
 
 
-def list_to_string():
+def test_list_to_string():
     # Позитивные тесты
-    assert list_to_string(["sky, pro"], "-") == "sky-pro"
-    assert list_to_string(['1,2,3']) == '1, 2, 3'
+    assert utils.list_to_string(["Sky", "Pro"], "-") == "Sky-Pro"
+    assert utils.list_to_string([1,2,3,4]) == "1, 2, 3, 4"
 
     #  Негативные тесты
-    assert list_to_string([]) == ""  # Пустой список
+    assert utils.list_to_string([]) == ""  # Пустой список
