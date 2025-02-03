@@ -17,6 +17,7 @@ def driver():
 
 def test_01_form(driver):
     global field
+    driver.implicitly_wait(30)
     driver.get(
         "https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
 
@@ -25,11 +26,11 @@ def test_01_form(driver):
     first_mame.send_keys("Иван")
 
     last_name = driver.find_element(
-        By.CSS_SELECTOR,"input [name='last-name']")
+        By.CSS_SELECTOR,"input[name='last-name']")
     last_name.send_keys('Петров')
 
     address = driver.find_element(
-        By.CSS_SELECTOR,"input [name='address']")
+        By.CSS_SELECTOR,"input[name='address']")
     address.send_keys('Ленина, 55-3')
 
     email = driver.find_element(
@@ -41,7 +42,7 @@ def test_01_form(driver):
     phone_number.send_keys("+7985899998787")
 
     zip_code = driver.find_element(
-        By.CSS_SELECTOR,"input [name='zip-code']")
+        By.CSS_SELECTOR,"input[name='zip-code']")
     zip_code.send_keys('')
 
     city = driver.find_element(
@@ -61,7 +62,7 @@ def test_01_form(driver):
     company.send_keys("SkyPro")
 
     WebDriverWait(driver, 20).until(EC.presence_of_element_located(
-        (By.CSS_SELECTOR,"input [name='company']")))
+        (By.CSS_SELECTOR,"input[name='company']")))
 
     driver.find_element(
         By.CSS_SELECTOR, "button[type='submit']").click()

@@ -15,10 +15,8 @@ def driver():
     driver.quit()
 
 
-def test_02_form():
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-
-    driver.implicitly_wait(30)
+def test_02_form(driver):
+    global field
     driver.get(
         "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
 

@@ -13,8 +13,8 @@ def driver():
     driver.quit()
 
 
-def test_03_form():
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+def test_03_form(driver):
+    global field
     driver.implicitly_wait(30)
     driver.get("https://www.saucedemo.com/")
 
