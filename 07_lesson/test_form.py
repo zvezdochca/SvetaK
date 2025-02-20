@@ -21,13 +21,5 @@ def test_search(driver):
     page.search_for('Иван', 'Петров',
                     'Ленина, 55-3', 'test@skypro.com', '+7985899998787',
                     'Москва',  'Россия', 'QA', 'SkyPro')
-
-
-def check_red_field(driver):
-    field = FormPage(driver)
-    field.check_red_field()
-
-
-def check_green_fields(driver):
-    fields = FormPage(driver)
-    fields.check_green_fields()
+    page.check_red_field()
+    page.check_green_fields()

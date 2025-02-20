@@ -36,7 +36,5 @@ class ShopPage:
             By.CSS_SELECTOR, "input[name='continue']").click()
 
     def total_amount(self):
-        self.driver.find_element(
-            By.CSS_SELECTOR, "div.summary_total_label"), "Total: $58.29)"
         return self.driver.find_element(
             By.CSS_SELECTOR, "div.summary_total_label").text
