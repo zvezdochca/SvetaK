@@ -19,7 +19,9 @@ def test_insert():
     transaction = connection.begin()
 
     sql = text("insert into subject (subject_title) values (:new_name)")
-    connection.execute(sql, {"new_name":"Arabian"})
+    rows = connection.execute(sql, {"new_name":"Arabian"})
+
+    assert rows[15]["subject_title"] == "Arabian"
 
     transaction.commit()
     connection.close()
@@ -29,7 +31,9 @@ def test_update():
     transaction = connection.begin()
 
     sql = text("update subject s set subject_id = '16' where s.subject_title = :subject")
-    connection.execute(sql,{"s.subject_title": 'Arabian'})
+    rows = connection.execute(sql,{"s.subject_title": 'Arabian'})
+
+    assert rows[15]["subject_id"] == "16"
 
     transaction.commit()
     connection.close()
@@ -39,7 +43,9 @@ def test_delete():
     transaction = connection.begin()
 
     sql = text("delete from subject where subject.subject_id = :id")
-    connection.execute(sql, {"id": 16})
+    rows = connection.execute(sql, {"id": 16})
+
+    assert len(rows) == 0
 
     transaction.commit()
     connection.close()
