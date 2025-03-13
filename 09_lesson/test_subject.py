@@ -1,4 +1,5 @@
 import pytest
+
 from  sqlalchemy import create_engine, inspect, text
 
 db_connection_string = "postgresql://postgres:123@localhost:5432/QA"
