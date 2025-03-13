@@ -6,11 +6,15 @@ db = create_engine(db_connection_string)
 
 def test_db_connection():
     inspector = inspect(db)
-    inspector.get_table_names() #список таблиц
+    names = inspector.get_table_names() #список таблиц
+
+    assert names[11] == 'subject'
 
 def test_select():
     connection = db.connect()  # Создаем соединение
-    connection.execute(text("select * from subject s")) #строки таблицы
+    rows = connection.execute(text("select * from subject s")) #строки таблицы
+
+    assert len(rows) > 0
 
     connection.close()
 
