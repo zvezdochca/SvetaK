@@ -1,5 +1,5 @@
 import pytest
-from  sqlalchemy import create_engine
+from  sqlalchemy import create_engine, inspect, text
 
 db_connection_string = "postgresql://postgres:123@localhost:5432/QA"
 db = create_engine(db_connection_string)
@@ -25,11 +25,11 @@ def test_insert():
     connection.close()
 
 def test_update():
-     connection = db.connect()
-     transaction = connection.begin()
+    connection = db.connect()
+    transaction = connection.begin()
 
-    sql = text("update  subject s  set subject_id = '16' where s.subject_title  = :subject")
-    connection.execute(sql, {"s.subject_title": 'Arabian'})
+    sql = text("update subject s set subject_id = '16' where s.subject_title = :subject")
+    connection.execute(sql,{"s.subject_title": 'Arabian'})
 
     transaction.commit()
     connection.close()
